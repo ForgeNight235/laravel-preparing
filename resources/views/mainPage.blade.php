@@ -31,8 +31,13 @@
     </header>
     <main>
         <div class="container">
-            <div class="goods">
+
                 @if(count($goods))
+                    <h3>Продукты магазина</h3>
+                <form action="#" class="search" method="get">
+                    <input type="text" name="search" placeholder="Поиск по сайту">
+                </form>
+                <div class="goods">
                     @foreach($goods as $good)
                         <div class="good">
                             <p class="ordered__count">{{ $good->ordered }}</p>
@@ -47,11 +52,12 @@
 
                         </div>
                     @endforeach
+                </div>
 
                 @else
                     <h2>На данный момент в магазине нет товаров (</h2>
                 @endif
-            </div>
+
             @if(count($goods))
                 {{ $goods->links('components.paginate') }}
             @endif
